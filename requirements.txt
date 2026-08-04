@@ -1,0 +1,7 @@
+# Nothing is required for the SQLite version. Python's standard library is enough.
+#
+# Install these only if you need them:
+
+psycopg2-binary==2.9.9   # only for --db postgres
+pytest==8.3.3            # only if you want to run tests with pytest
+                         # (python tests/test_transform.py works without it)

@@ -1,0 +1,201 @@
+Id,BIRTHDATE,DEATHDATE,SSN,PREFIX,FIRST,LAST,MARITAL,RACE,ETHNICITY,GENDER,BIRTHPLACE,ADDRESS,CITY,STATE,COUNTY,ZIP
+13f12889-ca5d-4c3b-960f-41870c67d39a,1997-05-13,2020-06-07,,,Patient5012,Patel,M,white,hispanic,F,Pune,33 Main Road,Pune,Maharashtra,,407812
+6f2c4f29-3cb8-4c10-be9d-3d598b265083,1947-02-27,,,,Patient7227,Kumar,S,asian,hispanic,F,Mumbai,364 Main Road,Mumbai,Maharashtra,,454922
+2245567c-7a42-4540-a100-321963801629,1966-08-14,,,,Patient9883,Sharma,,asian,hispanic,M,Mumbai,599 Main Road,Mumbai,Maharashtra,,524988
+c20deb98-0a2d-405e-98ef-8a13df7fe0c3,2005-05-11,,,,Patient9379,Sharma,S,other,hispanic,F,Bengaluru,46 Main Road,Bengaluru,Karnataka,,585804
+414c28f7-6fc2-404b-8caf-f8638b6616b2,1940-07-12,,,,Patient7389,Singh,,other,hispanic,F,Bengaluru,225 Main Road,Bengaluru,Karnataka,,471549
+05d21139-1e1f-4ed7-87e8-3e041c8b5bbc,1984-05-06,,,,Patient4475,Kumar,S,asian,nonhispanic,F,Bengaluru,570 Main Road,Bengaluru,Karnataka,,402662
+275912e7-3c62-478f-a826-65d0e1938f30,1979-05-26,,,,Patient5982,Iyer,S,asian,nonhispanic,F,Pune,83 Main Road,Pune,Maharashtra,,556772
+ed41556a-2ec1-4267-aed7-979b890b17b3,1982-03-02,,,,Patient6260,Iyer,M,black,nonhispanic,F,Bengaluru,711 Main Road,Bengaluru,Karnataka,,529885
+e859826f-b96d-4b52-84f6-95fb726d4c00,2002-07-29,,,,Patient4826,Singh,M,asian,nonhispanic,F,Mumbai,396 Main Road,Mumbai,Maharashtra,,573983
+06bbb20c-1c2a-42a9-8077-5d2f97f0b75e,1967-02-10,,,,Patient1742,Sharma,S,native,hispanic,M,Chennai,241 Main Road,Chennai,Tamil Nadu,,540915
+d15cd6a8-39bb-45a2-80d9-fd57427d94f9,1952-12-24,,,,Patient3858,Sharma,,white,hispanic,M,Mumbai,367 Main Road,Mumbai,Maharashtra,,462373
+71833fd6-a785-49b8-ada4-b82522cf8ca2,2007-01-07,,,,Patient7229,Reddy,,black,nonhispanic,M,Chennai,407 Main Road,Chennai,Tamil Nadu,,594522
+f78fe2a7-0b61-4d40-995d-9dbe0decd6b8,2001-11-13,,,,Patient2734,Patel,S,other,nonhispanic,M,Bengaluru,406 Main Road,Bengaluru,Karnataka,,481337
+d6194016-7de9-4d10-8ec6-f621d588850b,1959-12-02,,,,Patient1436,Singh,M,native,nonhispanic,M,Chennai,396 Main Road,Chennai,Tamil Nadu,,421393
+5a6a9f48-cd52-47a9-bd48-d113d2c0bd8d,1957-02-22,,,,Patient1783,Iyer,S,asian,hispanic,F,Bengaluru,448 Main Road,Bengaluru,Karnataka,,504864
+82621d4a-adbe-4ef6-a2ab-c678a132a800,1954-03-07,,,,Patient8609,Patel,S,other,hispanic,F,Chennai,883 Main Road,Chennai,Tamil Nadu,,588315
+244290c0-51bf-458d-9fab-85653bebc9ca,2013-03-08,,,,Patient2795,Singh,,asian,hispanic,F,Pune,272 Main Road,Pune,Maharashtra,,571860
+7b4f5ef3-bd38-474c-ba2d-1246ce00e5df,1974-05-30,,,,Patient5374,Kumar,S,other,hispanic,F,Mumbai,670 Main Road,Mumbai,Maharashtra,,494255
+a6bf72f8-2609-48ed-ae9b-abd809f69308,2007-09-03,,,,Patient4350,Singh,M,other,nonhispanic,F,Chennai,390 Main Road,Chennai,Tamil Nadu,,522225
+297c436b-4d8e-4a8c-a385-c9b7bb6d8556,1973-09-05,,,,Patient7227,Sharma,,asian,hispanic,M,Chennai,85 Main Road,Chennai,Tamil Nadu,,470248
+95587eae-e27b-4544-a406-bca0a7691265,1955-01-01,,,,Patient5911,Singh,M,asian,nonhispanic,M,Chennai,739 Main Road,Chennai,Tamil Nadu,,563849
+6664d63c-e2cf-4f98-bcff-5b8b89b355ce,1974-11-19,,,,Patient4371,Kumar,,white,hispanic,M,Pune,375 Main Road,Pune,Maharashtra,,485455
+06d6202f-9f01-463b-b30d-f1381ccbcfac,1950-02-26,,,,Patient9898,Kumar,,white,nonhispanic,M,Hyderabad,436 Main Road,Hyderabad,Telangana,,426848
+44c89f90-6720-47d2-905a-4db44949e05a,1968-05-23,,,,Patient7895,Kumar,,black,nonhispanic,M,Mumbai,18 Main Road,Mumbai,Maharashtra,,553974
+4bec1e00-95b8-4d7a-ab8b-fc4f1e2dce48,2005-06-27,,,,Patient2412,Singh,M,native,hispanic,F,Mumbai,683 Main Road,Mumbai,Maharashtra,,594431
+c05663ec-9486-444d-9877-962953181eb0,1989-05-09,,,,Patient2669,Patel,M,white,hispanic,M,Mumbai,134 Main Road,Mumbai,Maharashtra,,451940
+5b3e161e-9cda-4faf-87ad-ee54abe49299,1955-10-01,2011-04-06,,,Patient4811,Reddy,M,white,nonhispanic,M,Chennai,340 Main Road,Chennai,Tamil Nadu,,560992
+0dae7ad6-8add-4c52-b15e-372af81fcd4f,1958-01-27,,,,Patient3907,Kumar,M,white,hispanic,M,Mumbai,793 Main Road,Mumbai,Maharashtra,,429078
+fa0dc34b-612f-4ef8-a486-4331e008ed8c,1977-07-22,,,,Patient8779,Reddy,M,native,nonhispanic,M,Hyderabad,405 Main Road,Hyderabad,Telangana,,587251
+3ca07f20-a9ae-4de3-a31e-e69c8d1f4203,2001-04-14,,,,Patient3422,Reddy,S,asian,hispanic,M,Chennai,398 Main Road,Chennai,Tamil Nadu,,545848
+9b63e066-695d-4eb1-aa80-c8b0fa6e27ff,1974-09-05,,,,Patient4511,Patel,,black,hispanic,F,Pune,668 Main Road,Pune,Maharashtra,,507350
+7a155fec-819f-41a7-bb06-e478c941aeba,1956-11-26,,,,Patient7609,Sharma,M,black,hispanic,M,Mumbai,752 Main Road,Mumbai,Maharashtra,,405745
+b6b113de-ca2c-4e74-8e6a-91344c205156,1989-05-21,,,,Patient4850,Sharma,S,native,nonhispanic,M,Chennai,878 Main Road,Chennai,Tamil Nadu,,530668
+c0ccd099-63b9-43a4-9088-29cdbac557f3,1966-06-24,,,,Patient1529,Kumar,S,white,hispanic,F,Mumbai,244 Main Road,Mumbai,Maharashtra,,533936
+5a7ca31e-1244-41f0-9029-08ef4c795d32,1989-04-24,,,,Patient2103,Kumar,M,black,nonhispanic,F,Pune,366 Main Road,Pune,Maharashtra,,433611
+7ac248c3-dd5a-4c93-b75a-8a69095a5f38,1959-06-07,,,,Patient8723,Singh,M,black,nonhispanic,M,Chennai,814 Main Road,Chennai,Tamil Nadu,,552738
+05ef0c35-936a-4490-878e-1abeea41d585,1982-10-21,,,,Patient2373,Kumar,,other,nonhispanic,F,Mumbai,194 Main Road,Mumbai,Maharashtra,,401434
+53b6ceb7-6772-424e-85db-4ff64578ff4c,1963-04-19,,,,Patient4885,Kumar,S,other,nonhispanic,F,Mumbai,189 Main Road,Mumbai,Maharashtra,,530750
+00d9b14c-21bf-46f3-a819-1042dc76c919,1947-06-20,,,,Patient3544,Sharma,,native,nonhispanic,M,Pune,254 Main Road,Pune,Maharashtra,,593356
+d4ceb01c-e038-405d-a41a-838ae3782473,1965-04-23,,,,Patient8183,Iyer,M,black,hispanic,M,Bengaluru,16 Main Road,Bengaluru,Karnataka,,529389
+8d646252-81aa-45af-83d6-a4fb9a300bce,1940-10-19,,,,Patient8786,Iyer,,black,nonhispanic,M,Pune,255 Main Road,Pune,Maharashtra,,441340
+c9c040a4-8041-422b-9a3f-726fbcce0558,1987-11-24,,,,Patient6772,Kumar,,asian,nonhispanic,F,Hyderabad,783 Main Road,Hyderabad,Telangana,,566001
+4e27d8f8-62eb-4b49-8f54-84900e2f5074,1971-04-01,,,,Patient1396,Kumar,M,asian,nonhispanic,M,Mumbai,452 Main Road,Mumbai,Maharashtra,,411765
+c5ee0e92-007e-4c0c-930e-2ad666570746,1967-05-10,,,,Patient3572,Sharma,S,asian,nonhispanic,F,Bengaluru,242 Main Road,Bengaluru,Karnataka,,531401
+375ecd6b-ebe8-4081-8f49-e20b9c1c8791,1942-11-22,,,,Patient1245,Kumar,S,black,hispanic,M,Chennai,68 Main Road,Chennai,Tamil Nadu,,446420
+7c5320eb-547a-4f1c-a26b-d1a517fbf546,1942-11-28,,,,Patient5889,Kumar,M,white,hispanic,F,Hyderabad,183 Main Road,Hyderabad,Telangana,,442294
+4e772ea8-a945-47ae-9224-20fabe08ef4a,1944-02-20,,,,Patient6119,Sharma,,asian,hispanic,F,Pune,206 Main Road,Pune,Maharashtra,,450475
+556fd655-4136-4ef4-bbf0-2044cbe3bc33,1951-06-06,,,,Patient2752,Kumar,,white,nonhispanic,F,Hyderabad,411 Main Road,Hyderabad,Telangana,,554806
+d238954a-2d96-4a84-8aab-44d00ca9695c,1995-11-30,,,,Patient7948,Reddy,S,native,nonhispanic,M,Mumbai,191 Main Road,Mumbai,Maharashtra,,511352
+1075aac6-25bd-4c77-98b9-2ed9322f05a4,2002-02-06,,,,Patient2212,Kumar,M,native,nonhispanic,F,Bengaluru,62 Main Road,Bengaluru,Karnataka,,467696
+b7f8c405-884c-4cbd-b3a4-b0dab6723898,1993-03-12,,,,Patient2032,Reddy,,asian,nonhispanic,F,Mumbai,990 Main Road,Mumbai,Maharashtra,,404304
+3f86bc86-03c5-440b-ab6f-71e490ea4daa,1983-11-11,,,,Patient1750,Patel,,black,hispanic,M,Pune,648 Main Road,Pune,Maharashtra,,413097
+fd10e5ed-9533-41dc-b75d-48dd24b817b0,1940-05-29,,,,Patient2925,Reddy,M,other,nonhispanic,M,Hyderabad,476 Main Road,Hyderabad,Telangana,,564224
+a1f3c2ff-c7ca-4cf2-ba57-586d243e7bec,2000-07-11,,,,Patient2818,Singh,S,native,hispanic,F,Bengaluru,376 Main Road,Bengaluru,Karnataka,,445946
+cc3ab8a8-0e4b-423d-9ac9-e45cc9eaa2e8,1999-10-26,,,,Patient8006,Kumar,S,asian,hispanic,F,Bengaluru,354 Main Road,Bengaluru,Karnataka,,492106
+fbf249ff-707d-41e1-91c1-41eae9d380bd,1992-02-17,,,,Patient5225,Iyer,,native,hispanic,F,Chennai,525 Main Road,Chennai,Tamil Nadu,,592141
+c692468a-2af6-4c94-9985-8eeb4c9c29aa,1960-05-31,,,,Patient6149,Sharma,S,white,hispanic,F,Chennai,781 Main Road,Chennai,Tamil Nadu,,494700
+392d4348-9d72-483f-b13f-e49644903c0a,1970-03-21,,,,Patient9700,Singh,S,black,nonhispanic,M,Bengaluru,668 Main Road,Bengaluru,Karnataka,,479128
+c9eb82b8-66c8-450f-9d84-ec7f72084815,1954-05-17,,,,Patient7656,Sharma,S,white,nonhispanic,F,Chennai,755 Main Road,Chennai,Tamil Nadu,,508256
+1f14e9ee-8485-4b7a-987e-bda60fe19c6a,1975-09-01,,,,Patient7935,Iyer,,asian,hispanic,M,Mumbai,571 Main Road,Mumbai,Maharashtra,,415402
+d1880bde-71ed-48e7-9a3a-084a9bb4ce33,1981-12-29,,,,Patient9690,Singh,M,asian,hispanic,F,Mumbai,46 Main Road,Mumbai,Maharashtra,,433521
+914732b2-43b1-4293-95c9-dff1a8bc2db1,1993-11-09,,,,Patient7922,Kumar,,black,nonhispanic,F,Chennai,96 Main Road,Chennai,Tamil Nadu,,410601
+8da1be0e-03c1-421e-abf7-bc327d7f0b09,1992-09-20,,,,Patient8675,Patel,S,native,nonhispanic,F,Bengaluru,816 Main Road,Bengaluru,Karnataka,,523818
+6562ca87-d8fc-4ae6-9c99-e348b31e6531,1949-02-20,2012-05-13,,,Patient3736,Iyer,M,black,nonhispanic,M,Hyderabad,746 Main Road,Hyderabad,Telangana,,476579
+022c3e6c-2888-470f-8705-2d15fbcfdc7a,2003-07-14,,,,Patient9165,Iyer,M,black,nonhispanic,F,Chennai,839 Main Road,Chennai,Tamil Nadu,,436117
+9360024b-1f02-47fb-afef-07aa68da078c,1979-09-15,,,,Patient9476,Sharma,M,asian,nonhispanic,F,Mumbai,791 Main Road,Mumbai,Maharashtra,,443077
+e640c517-0289-44ab-97bf-8059ad04fb79,1943-08-12,,,,Patient7086,Kumar,S,asian,nonhispanic,F,Hyderabad,29 Main Road,Hyderabad,Telangana,,437453
+07a3b343-8895-409a-8239-20c1e36fbceb,1951-02-08,,,,Patient9877,Reddy,M,other,hispanic,F,Hyderabad,515 Main Road,Hyderabad,Telangana,,404893
+2a76548c-d5ab-4ae6-a830-7b16d36f1b81,2003-12-29,,,,Patient2617,Kumar,M,native,nonhispanic,F,Pune,385 Main Road,Pune,Maharashtra,,431711
+005f3638-2c6b-42cb-8681-4921cf95a05a,1996-11-01,,,,Patient1305,Kumar,,other,hispanic,M,Mumbai,782 Main Road,Mumbai,Maharashtra,,545414
+bc23abcd-f8d9-4c5a-9ff0-873e6291db42,1948-07-31,,,,Patient2401,Sharma,M,native,nonhispanic,M,Chennai,802 Main Road,Chennai,Tamil Nadu,,433433
+04992512-3528-422d-af4e-7c8efc816a65,1976-01-14,,,,Patient7735,Patel,,other,hispanic,F,Pune,394 Main Road,Pune,Maharashtra,,521690
+6bfdf201-5ad2-445b-b8aa-76a7923a0312,2010-08-22,,,,Patient4444,Kumar,S,black,nonhispanic,F,Pune,677 Main Road,Pune,Maharashtra,,444921
+9dcccdf6-9a75-4b0e-bdd5-30b80575076e,1980-07-04,,,,Patient2709,Iyer,,black,hispanic,F,Bengaluru,28 Main Road,Bengaluru,Karnataka,,448941
+1e3401c7-5ba0-4555-9716-7c67cf99a7cf,1965-10-30,,,,Patient5873,Singh,,black,nonhispanic,M,Chennai,184 Main Road,Chennai,Tamil Nadu,,561936
+492a76d0-5f28-4224-8ef2-08079ba38c27,2005-01-25,,,,Patient8270,Iyer,S,black,nonhispanic,F,Hyderabad,660 Main Road,Hyderabad,Telangana,,599359
+e229fd86-95be-40a1-9a87-d5fb97f1e0e0,2002-06-19,,,,Patient7250,Reddy,S,black,nonhispanic,M,Mumbai,67 Main Road,Mumbai,Maharashtra,,528882
+a44cefcc-b4c0-450a-ac55-9a81357b4886,1966-12-07,,,,Patient3878,Kumar,S,native,nonhispanic,F,Hyderabad,291 Main Road,Hyderabad,Telangana,,498343
+81ab24a5-e921-4505-89f2-8714da56ea57,1940-08-24,,,,Patient1685,Sharma,M,other,hispanic,F,Hyderabad,618 Main Road,Hyderabad,Telangana,,536335
+75e22eb3-9581-42bc-8bcb-7e61db17707a,1999-03-10,,,,Patient1478,Patel,S,native,nonhispanic,M,Pune,737 Main Road,Pune,Maharashtra,,467536
+7ce2ef48-456a-4d9b-b76b-6a04da57ceef,1950-07-11,,,,Patient3948,Sharma,,native,nonhispanic,M,Mumbai,41 Main Road,Mumbai,Maharashtra,,433769
+58fa4377-af57-48f1-9dee-7b2e5bd1efbf,1947-08-03,,,,Patient9074,Sharma,S,other,hispanic,F,Bengaluru,510 Main Road,Bengaluru,Karnataka,,535008
+df3b03a3-2d26-444b-9c14-d6d3142fd320,1978-04-25,,,,Patient5411,Kumar,S,asian,nonhispanic,M,Pune,328 Main Road,Pune,Maharashtra,,412467
+38b7b05e-5bf7-4a72-a7f8-f0737b5f517d,2008-02-15,,,,Patient6996,Singh,,white,nonhispanic,M,Hyderabad,495 Main Road,Hyderabad,Telangana,,509840
+ac6b1a7a-a78f-4701-8339-fa55128ab606,1967-07-30,,,,Patient4994,Sharma,,asian,hispanic,M,Bengaluru,845 Main Road,Bengaluru,Karnataka,,411673
+1fb2e272-d8f6-4a2f-bc33-323f3e7e941a,1993-10-17,,,,Patient3461,Iyer,,asian,nonhispanic,F,Mumbai,897 Main Road,Mumbai,Maharashtra,,427243
+29dd7cb9-590f-4f3a-888f-8765cbfd3743,2002-12-04,,,,Patient2208,Singh,,black,hispanic,M,Pune,375 Main Road,Pune,Maharashtra,,437036
+80adbf97-69ae-4ecc-8f8a-7db83d925107,1951-03-24,,,,Patient1917,Patel,S,black,hispanic,F,Mumbai,489 Main Road,Mumbai,Maharashtra,,482101
+04de1699-136f-48c1-aa28-6cf46a9694b1,1980-10-12,,,,Patient8699,Patel,,black,nonhispanic,M,Pune,616 Main Road,Pune,Maharashtra,,499690
+1e944937-1220-4047-9dbe-bed8b0cf4825,1980-07-01,,,,Patient5250,Patel,M,white,nonhispanic,F,Chennai,987 Main Road,Chennai,Tamil Nadu,,597441
+ef60ba1d-cbc8-458e-ac40-eae7c90f99d6,1941-06-22,,,,Patient2698,Singh,,other,hispanic,F,Hyderabad,516 Main Road,Hyderabad,Telangana,,552367
+0efd2461-dacf-4e35-bfac-27aee7492039,2013-08-08,,,,Patient7138,Patel,,asian,nonhispanic,F,Chennai,315 Main Road,Chennai,Tamil Nadu,,508716
+44db0a33-ae47-403e-8c53-19b86a6460b9,1949-03-25,,,,Patient6105,Patel,M,native,nonhispanic,F,Hyderabad,434 Main Road,Hyderabad,Telangana,,556325
+452ef7f2-3eb1-4db0-875b-caa2c51ce042,2001-07-26,,,,Patient2672,Patel,S,white,hispanic,M,Bengaluru,17 Main Road,Bengaluru,Karnataka,,520809
+e8ef8a71-484d-4bfc-9dc5-be326c7150b0,1971-03-10,,,,Patient5718,Iyer,M,white,hispanic,F,Bengaluru,757 Main Road,Bengaluru,Karnataka,,480039
+47a7d50e-d591-46d0-a92f-0bfd3f0e6a67,1966-04-26,,,,Patient7433,Patel,S,white,nonhispanic,F,Pune,860 Main Road,Pune,Maharashtra,,414247
+61a6bace-46f1-4521-96ee-83d3f5538f97,1950-11-10,,,,Patient4347,Sharma,S,white,nonhispanic,F,Hyderabad,57 Main Road,Hyderabad,Telangana,,431933
+e40a94a4-b824-4079-9868-dbdce938302b,1982-09-28,,,,Patient4876,Sharma,M,native,nonhispanic,M,Bengaluru,64 Main Road,Bengaluru,Karnataka,,560407
+759598d9-2036-44df-974d-e238946b6f10,1994-11-02,,,,Patient1928,Reddy,,white,nonhispanic,F,Hyderabad,669 Main Road,Hyderabad,Telangana,,407859
+1ceec1c1-4991-4047-bccc-c2c4896edc9f,2003-01-28,,,,Patient2159,Singh,,other,hispanic,F,Pune,970 Main Road,Pune,Maharashtra,,433939
+786c0ffc-3a98-4890-a746-d25ccc7657c7,1998-08-22,,,,Patient5383,Kumar,,other,hispanic,M,Mumbai,355 Main Road,Mumbai,Maharashtra,,507698
+b2c0328f-bd7d-4acd-8949-078cfb74e9ae,1950-05-09,,,,Patient7716,Kumar,M,asian,hispanic,F,Mumbai,670 Main Road,Mumbai,Maharashtra,,526919
+7970befa-1fd2-4155-8fb3-4ae30e90a2a2,2006-10-09,,,,Patient6359,Patel,,asian,nonhispanic,F,Mumbai,646 Main Road,Mumbai,Maharashtra,,592813
+bd3b121b-e5aa-436f-b32c-f517ced15307,1973-11-24,,,,Patient5423,Sharma,M,white,nonhispanic,M,Chennai,16 Main Road,Chennai,Tamil Nadu,,594682
+8817a281-3e4a-47c3-83dd-7a31dea9e3c9,2013-08-19,,,,Patient6009,Kumar,,native,nonhispanic,M,Chennai,80 Main Road,Chennai,Tamil Nadu,,555357
+125f6501-a419-4829-9c81-3a55cf81a5e7,1972-10-21,,,,Patient6668,Iyer,S,black,hispanic,F,Chennai,384 Main Road,Chennai,Tamil Nadu,,446926
+478d0510-9ae7-4830-8539-a9c351376f73,2007-06-21,,,,Patient8478,Reddy,,native,nonhispanic,F,Pune,855 Main Road,Pune,Maharashtra,,463856
+f515d360-52da-4fd0-b286-72d6b55b4c91,1974-06-16,,,,Patient5668,Kumar,S,native,hispanic,F,Mumbai,982 Main Road,Mumbai,Maharashtra,,510556
+1a58a156-37c3-4dbe-9932-bc29720d3c0b,1981-04-16,,,,Patient7050,Kumar,S,asian,nonhispanic,M,Bengaluru,556 Main Road,Bengaluru,Karnataka,,470055
+5f352dce-7d1e-481b-849c-502b5fd728d7,1997-02-14,,,,Patient1366,Patel,,asian,hispanic,F,Bengaluru,989 Main Road,Bengaluru,Karnataka,,430521
+ac5c8261-d019-4af3-8636-4e745589e50d,2008-08-16,,,,Patient5651,Reddy,,native,hispanic,F,Pune,944 Main Road,Pune,Maharashtra,,540927
+8294ac48-f9bb-437f-90d1-b08dc90fa145,1993-10-15,,,,Patient1374,Kumar,,black,hispanic,F,Hyderabad,701 Main Road,Hyderabad,Telangana,,423847
+49806860-b496-498f-bbb9-3dcefbb49c78,1973-04-09,,,,Patient5771,Kumar,,black,nonhispanic,F,Hyderabad,731 Main Road,Hyderabad,Telangana,,515308
+cb8fb54c-4e9b-4ba6-b58a-8988cb2eacc9,1982-07-03,,,,Patient5413,Patel,S,native,nonhispanic,F,Hyderabad,149 Main Road,Hyderabad,Telangana,,480277
+5604e4bd-9dee-401e-a6b5-6e20d677bd4f,1983-08-19,,,,Patient1987,Reddy,S,white,nonhispanic,M,Pune,983 Main Road,Pune,Maharashtra,,532177
+b94262ef-72c1-484b-9013-203adf38543c,1958-06-13,,,,Patient3042,Sharma,M,other,hispanic,M,Chennai,775 Main Road,Chennai,Tamil Nadu,,454956
+f2c077db-58cd-458f-b31d-9f2abebdf581,1952-07-30,,,,Patient2002,Reddy,M,asian,nonhispanic,F,Chennai,844 Main Road,Chennai,Tamil Nadu,,441284
+73eefe7f-4b05-4e1e-8f9b-ade3f8d2ed19,1968-12-07,,,,Patient8927,Kumar,M,other,nonhispanic,F,Pune,220 Main Road,Pune,Maharashtra,,518802
+7f8f53ce-90dc-4bee-8dcf-ff34b2be0a91,1947-06-15,,,,Patient8955,Patel,,native,hispanic,F,Pune,682 Main Road,Pune,Maharashtra,,469666
+285b6dc6-1be3-4000-80e1-a30b011dca3b,2002-09-20,,,,Patient3631,Patel,,other,nonhispanic,F,Bengaluru,772 Main Road,Bengaluru,Karnataka,,491368
+06a26507-6a08-4495-85af-e49e97af28fe,1964-07-24,,,,Patient4587,Patel,M,native,hispanic,M,Pune,13 Main Road,Pune,Maharashtra,,477803
+fcf04c11-c4e3-416d-a31d-471ccbdd24b7,2008-07-28,,,,Patient4525,Iyer,S,asian,nonhispanic,F,Mumbai,239 Main Road,Mumbai,Maharashtra,,549385
+ee30c1c5-2358-4e55-9aa5-f08105d4aca1,1965-05-07,,,,Patient4244,Kumar,,native,nonhispanic,F,Bengaluru,387 Main Road,Bengaluru,Karnataka,,421598
+188efcff-4202-4827-9561-0ac8cc79a3af,1974-10-25,,,,Patient2104,Patel,S,other,nonhispanic,F,Mumbai,757 Main Road,Mumbai,Maharashtra,,437424
+7cdb5418-aa05-4b13-81ec-e6b98cd1db8c,1981-07-27,,,,Patient7688,Kumar,,asian,hispanic,F,Hyderabad,145 Main Road,Hyderabad,Telangana,,523269
+f678ce1a-2c4b-43f0-8565-d409521f5e64,1940-10-11,,,,Patient2473,Kumar,S,black,hispanic,M,Pune,315 Main Road,Pune,Maharashtra,,417308
+47efab39-3b5a-4076-b550-57bcac6caa83,1980-05-11,,,,Patient6220,Reddy,M,white,hispanic,M,Pune,249 Main Road,Pune,Maharashtra,,419508
+4f97ac2a-51c9-4445-9b0e-0d134876b5da,1968-10-31,,,,Patient5861,Reddy,S,other,nonhispanic,M,Mumbai,437 Main Road,Mumbai,Maharashtra,,465785
+02b502d0-1528-490e-858f-344a8d159278,1950-12-06,,,,Patient5618,Kumar,,asian,hispanic,F,Hyderabad,579 Main Road,Hyderabad,Telangana,,524132
+498f6865-a1ae-4447-a791-060ce92ec61f,1995-12-12,,,,Patient9043,Singh,,asian,hispanic,F,Bengaluru,399 Main Road,Bengaluru,Karnataka,,450642
+62b394fa-6d7e-4da2-8dee-f1830b06aabe,2004-05-07,,,,Patient2112,Patel,M,white,hispanic,M,Mumbai,95 Main Road,Mumbai,Maharashtra,,597830
+6cae97a6-1005-4cdd-aeb4-6fdd24bf826d,1979-12-21,,,,Patient9385,Singh,M,black,hispanic,M,Hyderabad,397 Main Road,Hyderabad,Telangana,,427979
+96d8f55b-c528-4a8a-8d72-d663f1c6ee03,1946-06-24,,,,Patient7653,Kumar,M,other,hispanic,M,Bengaluru,25 Main Road,Bengaluru,Karnataka,,404252
+fc9ac06e-ff91-4050-a023-757a2ce68c15,1982-12-03,,,,Patient9050,Sharma,S,asian,nonhispanic,M,Hyderabad,262 Main Road,Hyderabad,Telangana,,583667
+cd73a336-ccdf-4608-aebf-2eef111e4830,1958-02-28,,,,Patient7401,Sharma,S,white,hispanic,M,Mumbai,538 Main Road,Mumbai,Maharashtra,,574565
+216720e9-fa6c-460d-a442-22d23c1f4de3,2015-04-25,,,,Patient3248,Singh,S,white,nonhispanic,F,Hyderabad,546 Main Road,Hyderabad,Telangana,,535528
+cf8f4173-9f6d-41a1-88ef-857130bf3a1b,1966-01-28,,,,Patient8695,Sharma,,other,hispanic,M,Mumbai,464 Main Road,Mumbai,Maharashtra,,586927
+8c99436c-1e5c-4748-90fb-63da43f7f5dc,1993-09-30,,,,Patient1594,Singh,S,white,hispanic,M,Hyderabad,725 Main Road,Hyderabad,Telangana,,441617
+004aec31-07a3-49b1-9c4a-1cb5f81c0f4c,1946-11-29,,,,Patient5408,Patel,,white,nonhispanic,F,Pune,741 Main Road,Pune,Maharashtra,,446904
+3089e183-e37a-4c09-b450-a10ed84b28ac,2011-09-01,,,,Patient7471,Reddy,,native,nonhispanic,F,Chennai,806 Main Road,Chennai,Tamil Nadu,,558733
+46a498e8-96d7-445e-8b04-71629f25556a,1964-06-02,,,,Patient5924,Singh,,native,hispanic,F,Bengaluru,821 Main Road,Bengaluru,Karnataka,,467540
+ce74ded6-7f8b-4bd5-8796-b71fdb6c26b9,1961-02-21,,,,Patient9058,Singh,,black,nonhispanic,F,Chennai,870 Main Road,Chennai,Tamil Nadu,,461634
+3edc2af0-fd89-41c8-99e4-e5650bdb08a7,1953-04-01,,,,Patient3066,Patel,,white,nonhispanic,F,Pune,705 Main Road,Pune,Maharashtra,,483874
+bf3e42fb-ee2a-4e53-b8fb-75412b9f7133,1977-04-13,,,,Patient4343,Iyer,M,asian,hispanic,F,Mumbai,317 Main Road,Mumbai,Maharashtra,,542166
+2f5ca819-a3dc-45b5-b73b-3b4516e08c44,1990-05-07,,,,Patient3758,Patel,,other,hispanic,M,Mumbai,482 Main Road,Mumbai,Maharashtra,,457257
+af712b74-e3e2-46aa-a4be-8e023f91f9be,1959-03-31,,,,Patient1599,Kumar,M,other,nonhispanic,M,Mumbai,288 Main Road,Mumbai,Maharashtra,,568564
+e1e3326c-f969-41c6-b6dc-1ac871e30f54,2010-11-16,,,,Patient2464,Reddy,M,other,nonhispanic,M,Mumbai,433 Main Road,Mumbai,Maharashtra,,588985
+c1e06328-976c-4be9-b54e-92365baccdcb,1973-01-17,,,,Patient9207,Reddy,M,asian,nonhispanic,M,Mumbai,477 Main Road,Mumbai,Maharashtra,,559933
+65b10095-33ed-4f62-a36b-6c34e5bceb17,1980-02-21,,,,Patient4889,Singh,,other,hispanic,F,Mumbai,48 Main Road,Mumbai,Maharashtra,,455565
+a247091f-cc4b-4fc3-8c17-d545413d1abe,2012-05-28,,,,Patient3314,Singh,S,other,hispanic,F,Mumbai,638 Main Road,Mumbai,Maharashtra,,583417
+f0eea2d2-5104-4d1b-be02-cb13ec952b6b,1959-10-09,,,,Patient6927,Iyer,M,other,hispanic,M,Bengaluru,857 Main Road,Bengaluru,Karnataka,,474633
+e55d217e-4420-481c-8bdf-9b23ef415de0,1948-10-24,,,,Patient9659,Kumar,,asian,hispanic,F,Mumbai,864 Main Road,Mumbai,Maharashtra,,450343
+321cb16d-29ad-4029-8c54-f81f73a2904d,1951-11-26,,,,Patient3805,Patel,S,native,hispanic,F,Bengaluru,558 Main Road,Bengaluru,Karnataka,,420749
+88c37d1b-98e1-454c-9cda-0a5e83916b03,1943-05-23,,,,Patient4765,Iyer,,native,nonhispanic,F,Bengaluru,664 Main Road,Bengaluru,Karnataka,,434076
+32e200e2-6d55-4e00-8fb8-763932d89b89,1991-05-15,,,,Patient3693,Kumar,M,asian,hispanic,F,Pune,740 Main Road,Pune,Maharashtra,,526695
+ff23b9bd-77b5-44b6-85b8-86c74280012f,1967-08-05,,,,Patient8433,Sharma,S,asian,hispanic,M,Pune,222 Main Road,Pune,Maharashtra,,591086
+4a3dc5f8-2146-4716-82a0-4e654e77729e,2011-06-20,,,,Patient5719,Patel,,black,nonhispanic,M,Bengaluru,991 Main Road,Bengaluru,Karnataka,,421753
+2991ab55-42e0-4afa-91c8-887bd4888616,1956-10-03,,,,Patient2144,Patel,M,asian,hispanic,F,Hyderabad,778 Main Road,Hyderabad,Telangana,,538150
+419a2b40-5e94-4d22-bebf-220c6cfb629e,1980-01-21,,,,Patient9669,Singh,M,black,hispanic,M,Mumbai,301 Main Road,Mumbai,Maharashtra,,549916
+d5dc05d3-51e6-42c7-9cef-a32157675226,1944-10-29,,,,Patient3653,Singh,M,other,nonhispanic,F,Chennai,62 Main Road,Chennai,Tamil Nadu,,443609
+b5550475-7c62-46fd-963e-fabc31171d13,1989-07-11,,,,Patient5416,Reddy,M,asian,hispanic,M,Pune,325 Main Road,Pune,Maharashtra,,445121
+dfe45279-13f1-4f8e-b7d5-fb73168deaa1,1950-10-16,,,,Patient5794,Sharma,S,native,hispanic,M,Chennai,222 Main Road,Chennai,Tamil Nadu,,527129
+a4e2fe39-3514-471d-8015-aaa2ea1dbefb,1971-12-11,,,,Patient4819,Reddy,S,other,nonhispanic,F,Hyderabad,955 Main Road,Hyderabad,Telangana,,403024
+9d52fcdf-34a1-4884-ac8b-68f1985c8e09,2007-07-22,,,,Patient9957,Reddy,,white,nonhispanic,F,Hyderabad,854 Main Road,Hyderabad,Telangana,,544482
+bdf6942c-8701-4285-aeb9-db457f91558e,1993-06-20,,,,Patient7469,Patel,S,asian,hispanic,F,Hyderabad,727 Main Road,Hyderabad,Telangana,,569770
+13cb0e90-4e9e-43fc-9c1a-49fde10fc027,1944-11-10,,,,Patient6472,Reddy,,asian,hispanic,M,Pune,10 Main Road,Pune,Maharashtra,,582136
+0bab5989-806f-4d7f-b83a-784964b72719,1975-07-23,,,,Patient5695,Reddy,M,native,nonhispanic,M,Chennai,286 Main Road,Chennai,Tamil Nadu,,466612
+24300319-631a-4ae4-96fd-bad0cbc4020b,1960-08-20,,,,Patient1266,Sharma,,other,nonhispanic,F,Mumbai,445 Main Road,Mumbai,Maharashtra,,499459
+f3a9ad08-97f6-4a6e-96b9-336452cde71b,1992-10-24,,,,Patient2600,Sharma,M,black,hispanic,F,Bengaluru,856 Main Road,Bengaluru,Karnataka,,597027
+8a569115-55b0-402a-9fee-2a92f0e4ed8b,2014-11-22,,,,Patient2505,Reddy,,other,nonhispanic,M,Hyderabad,447 Main Road,Hyderabad,Telangana,,469802
+3ecedcae-f6cf-4857-8180-db820ea5dc99,1998-06-28,,,,Patient5289,Iyer,S,black,hispanic,M,Hyderabad,430 Main Road,Hyderabad,Telangana,,419003
+f0caa05f-e135-45e7-989d-26f8c8520c01,1968-07-09,,,,Patient5881,Singh,M,other,hispanic,F,Mumbai,343 Main Road,Mumbai,Maharashtra,,413913
+337b846d-7c0c-49c1-bdf1-e7264ac47fd0,1959-11-11,,,,Patient3855,Reddy,S,asian,hispanic,F,Bengaluru,703 Main Road,Bengaluru,Karnataka,,548658
+e2c76f68-755b-42e5-91ec-d5c3dd8de889,1959-09-25,,,,Patient1106,Kumar,,asian,nonhispanic,F,Mumbai,773 Main Road,Mumbai,Maharashtra,,547476
+cbfed02e-a418-4eab-9cda-980d0d710580,1993-05-14,,,,Patient8208,Singh,S,asian,nonhispanic,M,Mumbai,626 Main Road,Mumbai,Maharashtra,,540842
+87d08831-c1f7-4def-9b62-ad38a7070a5e,1940-10-06,,,,Patient7175,Patel,S,black,hispanic,M,Bengaluru,395 Main Road,Bengaluru,Karnataka,,435309
+ab7530cd-647f-4231-9a50-3ffd0966e08b,1964-10-10,,,,Patient2944,Kumar,M,native,hispanic,F,Mumbai,54 Main Road,Mumbai,Maharashtra,,575033
+baf6cfa8-6f13-46f4-841a-688857e80db8,2012-12-30,,,,Patient2030,Sharma,S,asian,hispanic,M,Chennai,26 Main Road,Chennai,Tamil Nadu,,439842
+29ecc2b7-4cb0-4926-a6e3-c54d415adead,1953-09-14,,,,Patient9328,Sharma,,white,nonhispanic,F,Mumbai,158 Main Road,Mumbai,Maharashtra,,490730
+633f70ff-5ebb-4e9d-8578-d10fdaf30966,1952-12-25,,,,Patient2134,Kumar,M,asian,nonhispanic,F,Pune,279 Main Road,Pune,Maharashtra,,474132
+259b290c-51cf-4984-93f5-a20963a97874,2006-02-22,,,,Patient2880,Patel,,native,nonhispanic,F,Bengaluru,886 Main Road,Bengaluru,Karnataka,,493386
+a795baea-a82a-4302-8b49-d983836e3e76,2005-11-30,,,,Patient5232,Singh,M,black,hispanic,M,Hyderabad,278 Main Road,Hyderabad,Telangana,,587889
+67388ca1-6bcc-4b3a-9dc0-b2632f71d3aa,1992-06-23,,,,Patient9745,Kumar,,asian,hispanic,M,Bengaluru,498 Main Road,Bengaluru,Karnataka,,465302
+7f78f904-0704-44d5-ad5e-aa1ce7ec9982,1949-08-06,,,,Patient1662,Sharma,S,other,hispanic,M,Mumbai,66 Main Road,Mumbai,Maharashtra,,568393
+880e676a-8925-4fe6-a6e5-57d4f5c5c28c,1989-11-26,,,,Patient6067,Kumar,M,white,hispanic,F,Hyderabad,182 Main Road,Hyderabad,Telangana,,549427
+74f00f00-8adf-4e83-a5bd-09cc50bf07a1,1960-01-29,,,,Patient8554,Iyer,,white,nonhispanic,F,Bengaluru,726 Main Road,Bengaluru,Karnataka,,593013
+0f3e443b-4998-4198-8f89-f56563df87da,1964-08-08,,,,Patient7567,Kumar,M,asian,hispanic,F,Bengaluru,146 Main Road,Bengaluru,Karnataka,,433043
+bfc8e599-2cde-49d5-9873-332b0b39cb45,2013-12-06,,,,Patient6120,Sharma,S,white,hispanic,F,Mumbai,342 Main Road,Mumbai,Maharashtra,,591013
+7a066c76-acb0-4b28-9a3d-9e0d134fc8a9,1942-09-19,,,,Patient9681,Patel,S,white,hispanic,M,Mumbai,246 Main Road,Mumbai,Maharashtra,,568902
+86c48fa7-22ff-465b-916b-ded22b8a3721,1959-10-30,,,,Patient6129,Iyer,,other,hispanic,F,Bengaluru,985 Main Road,Bengaluru,Karnataka,,596347
+37262bc7-5281-499f-869c-c079c3dd2e47,1987-10-14,,,,Patient8771,Kumar,M,asian,nonhispanic,M,Mumbai,250 Main Road,Mumbai,Maharashtra,,589664
+a2e7c25d-0474-453c-90fa-1153dfbe93eb,1959-03-14,,,,Patient8972,Singh,M,native,hispanic,M,Pune,270 Main Road,Pune,Maharashtra,,566137
+4ae9ef84-80d0-48a6-aab0-6e55472fbde0,1960-11-14,,,,Patient6834,Singh,S,black,hispanic,F,Pune,777 Main Road,Pune,Maharashtra,,473269
+c867609a-6d7c-407d-bba3-def52b7608d0,1947-01-04,,,,Patient3361,Patel,S,white,nonhispanic,M,Chennai,177 Main Road,Chennai,Tamil Nadu,,509895
+8400dd7c-f579-449e-8d70-ffeff328a13f,2011-02-03,,,,Patient7784,Iyer,M,white,nonhispanic,M,Mumbai,420 Main Road,Mumbai,Maharashtra,,542529
+ddac7313-0e12-4b30-afab-d28df0e9558b,2010-06-18,,,,Patient5564,Reddy,S,other,nonhispanic,F,Bengaluru,460 Main Road,Bengaluru,Karnataka,,410243
+4db401f8-45ba-49e8-88c8-526a662b6801,2003-05-15,,,,Patient9306,Patel,M,black,nonhispanic,F,Hyderabad,992 Main Road,Hyderabad,Telangana,,400296
+335319d2-9227-464d-9714-4d22693ca299,1961-09-26,,,,Patient2419,Sharma,M,black,hispanic,M,Hyderabad,582 Main Road,Hyderabad,Telangana,,592678
+286a2dff-c162-4bc8-81e2-db1059f31a10,1973-04-16,,,,Patient5570,Sharma,,black,hispanic,M,Bengaluru,122 Main Road,Bengaluru,Karnataka,,585660
+64680507-bbae-423d-9861-0c175e5f2fc0,1977-08-11,,,,Patient1114,Patel,S,other,hispanic,F,Hyderabad,804 Main Road,Hyderabad,Telangana,,492248
