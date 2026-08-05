@@ -393,3 +393,32 @@ Expected on the 200-patient sample data, without Athena:
 
 The three warnings are: two patients with no visits, and clinical mapping
 coverage at 0% because Athena is not loaded. Both are expected and explained.
+
+### Verified: PostgreSQL with the Athena vocabulary
+
+```bash
+python -m src.run_etl --db postgres --dsn "postgresql://user:pw@localhost:5432/omop" \
+       --vocab-dir data/vocab/athena
+python -m src.run_quality_checks --db postgres --dsn "postgresql://user:pw@localhost:5432/omop"
+```
+
+Vocabulary loaded: 1,686,068 concepts, 1,101,395 `Maps to` relationships
+(SNOMED CT, RxNorm, LOINC).
+
+| Measure | Result |
+|---|---|
+| Source rows read | 7,164 |
+| OMOP rows written | 7,365 |
+| Rejected rows | 0 |
+| Distinct unmapped codes | 1 (`race = other`) |
+| SNOMED / RxNorm / LOINC coverage | 100% |
+| Race coverage | 80.5% |
+| Quality checks | 19 of 20 pass (0 errors, 1 warning) |
+| Runtime | 72.8s, of which ~70s is vocabulary loading |
+
+The single warning is `every_person_has_observation_period` — the same two
+patients with no visits (assumption A6).
+
+100% clinical coverage reflects the curated code set used by the built-in
+sample generator. Real Synthea output uses a far wider code set and coverage
+is expected to fall to roughly 85-95%.

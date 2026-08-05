@@ -79,13 +79,30 @@ python tests/test_transform.py                      # run the tests
 
 That is it. Four commands, about ten seconds.
 
-When you want the real thing, see **[docs/01_SETUP.md](docs/01_SETUP.md)** for
-switching to PostgreSQL, using real Synthea data, and loading the official
-medical vocabulary.
+### The full version
+
+With PostgreSQL and the official OHDSI vocabulary downloaded from
+[athena.ohdsi.org](https://athena.ohdsi.org):
+
+```bash
+python -m src.run_etl --db postgres \
+       --dsn "postgresql://user:password@localhost:5432/omop" \
+       --vocab-dir data/vocab/athena
+
+python -m src.run_quality_checks --db postgres \
+       --dsn "postgresql://user:password@localhost:5432/omop"
+```
+
+Same code, same SQL, same tables. Only the connection string changes.
+
+See **[docs/01_SETUP.md](docs/01_SETUP.md)** for installing PostgreSQL, using
+real Synthea data, and downloading the vocabulary.
 
 ---
 
 ## What you should see
+
+*SQLite, 200 sample patients, no vocabulary loaded:*
 
 ```
 ==============================================================
@@ -128,6 +145,78 @@ And the quality report:
   17 of 20 checks passed  (0 error, 3 warning)
 ```
 
+The two extra warnings are the clinical mapping-coverage checks, which sit at
+0% until you load the vocabulary. The next section shows what happens when
+you do.
+
+---
+
+## Verified results
+
+The pipeline has been run end to end against **PostgreSQL 17** with the full
+**OHDSI Athena** vocabulary loaded (1,686,068 concepts and 1,101,395
+`Maps to` relationships covering SNOMED CT, RxNorm and LOINC).
+
+### Load
+
+```
+  Table                          Rows
+  ------------------------ ----------
+  person                          200
+  observation_period              198
+  visit_occurrence              1,277
+  condition_occurrence          1,260
+  drug_exposure                 1,289
+  measurement                   3,138
+  death                             3
+
+  Read 7,164 source rows -> wrote 7,365 OMOP rows in 72.8s
+```
+
+Most of those 72.8 seconds is reading the vocabulary files. The transform
+itself is still sub-second.
+
+### Vocabulary coverage
+
+```
+    LOINC         100.0%  ####################
+    RxNorm        100.0%  ####################
+    SNOMED        100.0%  ####################
+    ethnicity     100.0%  ####################
+    gender        100.0%  ####################
+    race           80.5%  ################
+    unit          100.0%  ####################
+    visit         100.0%  ####################
+```
+
+Exactly one distinct code failed to map: `race = other`, which has no OMOP
+equivalent. Zero rows were rejected.
+
+> **Read that 100% honestly.** The built-in generator uses a small, curated
+> set of real SNOMED, RxNorm and LOINC codes, so of course they all resolve.
+> Real Synthea output uses thousands of codes and coverage will land nearer
+> 85-95%. The drop is not a regression — it is the pipeline meeting reality.
+
+### Data quality
+
+```
+  19 of 20 checks passed  (0 error, 1 warning)
+
+  [WARN] every_person_has_observation_period
+        People with no visits have no observation period.
+        Found 2, limit was 0
+
+  No blocking errors. The data is safe to analyse.
+```
+
+**Zero errors is the number that matters.** The single warning is correct
+behaviour, not a defect: two patients never attended a visit, so there is no
+window during which they were observed. Inventing one would make them look
+like patients who had been checked and found healthy.
+
+Results are written to `dq_result` with a run id, so quality is tracked across
+runs rather than glanced at once.
+
 ---
 
 ## The payoff
@@ -169,6 +258,7 @@ omop_etl/
 │   └── 04_GLOSSARY.md                 every term explained simply
 │
 ├── src/
+│   ├── __init__.py                    marks src as a Python package
 │   ├── generate_sample_data.py        makes fake Synthea-shaped CSVs
 │   ├── vocabulary.py                  turns codes into OMOP concept IDs
 │   ├── transform.py                   the mapping rules
@@ -261,7 +351,9 @@ a sign you understand it.
    pipeline would load only what changed.
 3. **Clinical codes need Athena.** Without the downloaded vocabulary,
    diagnoses, drugs and labs map to concept_id 0. Gender, race, visits and
-   units work either way.
+   units work either way. The vocabulary is loaded into memory on every run,
+   which takes about 70 seconds and several GB of RAM; a production pipeline
+   would query the vocabulary tables in the database instead.
 4. **Text lab results are skipped.** Things like "Never smoker" belong in the
    OMOP `observation` table, which this project does not build. They are
    logged as rejects, not lost.
@@ -273,8 +365,14 @@ a sign you understand it.
 
 ## Where to go next
 
-- Load real **Synthea** data — [docs/01_SETUP.md](docs/01_SETUP.md)
-- Load the official **Athena** vocabulary to get real concept IDs
-- Add `procedure_occurrence` (about 30 lines, same pattern as conditions)
-- Switch to **PostgreSQL** with `--db postgres`
-- Build a dashboard on top in R/Shiny or Python
+Done:
+
+- [x] Switch to **PostgreSQL** with `--db postgres`
+- [x] Load the official **Athena** vocabulary to get real concept IDs
+
+Still to do:
+
+- [ ] Load real **Synthea** data — [docs/01_SETUP.md](docs/01_SETUP.md)
+- [ ] Run OHDSI **Achilles** and the **Data Quality Dashboard** against the CDM
+- [ ] Add `procedure_occurrence` (about 30 lines, same pattern as conditions)
+- [ ] Build a dashboard on top in R/Shiny or Python

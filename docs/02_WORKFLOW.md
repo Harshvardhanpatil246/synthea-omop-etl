@@ -295,6 +295,10 @@ Read 7,164 source rows  ->  wrote 7,365 OMOP rows in 0.3s
 More rows come out than went in because `observation_period` is created from
 nothing — it is calculated, not copied.
 
+With the Athena vocabulary loaded, the two mapping-coverage warnings clear and
+the same run reports **19 of 20 (0 error, 1 warning)**. The remaining warning
+is the two patients with no visits, which is correct behaviour.
+
 ---
 
 ## Making changes
@@ -320,6 +324,11 @@ Add one tuple to the `CHECKS` list in `src/run_quality_checks.py`:
  "SELECT count(*) FROM ... WHERE ...",   -- must return one number
  0, "eq"),                                -- passes when result equals 0
 ```
+
+> **Write portable SQL.** The same check must run on both SQLite and
+> PostgreSQL. Avoid engine-specific date functions — SQLite stores dates as
+> text, PostgreSQL uses a real `DATE` type, and a string function that works
+> on one will fail on the other. Cast explicitly if you need to.
 
 ### Change a mapping
 

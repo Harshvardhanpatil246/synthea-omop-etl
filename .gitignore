@@ -1,0 +1,9 @@
+@'
+data/omop.db
+data/source/*.csv
+data/vocab/
+data/unmapped_codes.csv
+__pycache__/
+*.pyc
+.venv/
+'@ | Set-Content .gitignore

@@ -57,7 +57,7 @@ for row in conn.execute("SELECT * FROM person LIMIT 5"):
 
 | Error | What it means | Fix |
 |---|---|---|
-| `No module named src` | Wrong folder | `cd` into `omop_etl` first |
+| `No module named src` | Wrong folder, or `src/__init__.py` is missing | `cd` into `omop_etl` first; create an empty `src/__init__.py` |
 | `No patients.csv found` | No data yet | Run `generate_sample_data` first |
 | `python: command not found` | Different name | Try `python3` |
 | `SyntaxError` with `->` or `\|` | Python too old | Upgrade to 3.10+ |
@@ -92,11 +92,16 @@ cd synthea
 # Open src/main/resources/synthea.properties and set:
 #     exporter.csv.export = true
 
-# Generate 1000 patients in Maharashtra
-./run_synthea -p 1000 Maharashtra
+# Generate 1000 patients
+./run_synthea -p 1000 Massachusetts
 ```
 
-On Windows use `run_synthea.bat` instead.
+On Windows use `.\run_synthea.bat -p 1000 Massachusetts` instead.
+
+> **Use a US state name.** Stock Synthea ships only US geography and
+> demographics, so an Indian state name will fail. Generating Indian patients
+> needs the separate `synthea-international` project — a different exercise,
+> not required here.
 
 It takes 5-15 minutes. Output lands in `synthea/output/csv/`.
 
@@ -181,16 +186,25 @@ Before:
     LOINC           0.0%
 ```
 
-After:
+After (measured, on the built-in sample data):
 
 ```
   Vocabulary coverage:
-    SNOMED         96.4%  ###################
-    RxNorm         91.2%  ##################
-    LOINC          88.7%  #################
+    LOINC         100.0%  ####################
+    RxNorm        100.0%  ####################
+    SNOMED        100.0%  ####################
 ```
 
-And the quality checks that were failing on mapping coverage now pass.
+Loading takes about 70 seconds and reads 1,686,068 concepts plus 1,101,395
+`Maps to` relationships into memory. Close other applications if you have 8 GB
+of RAM or less.
+
+The quality checks that were failing on mapping coverage now pass — 19 of 20,
+0 errors.
+
+> 100% is a property of the sample generator, which uses a small curated set
+> of real codes. Real Synthea data uses thousands of codes and will land
+> nearer 85-95%. That is expected.
 
 > **Heads up:** Athena files are **tab**-separated, not comma-separated,
 > even though they end in `.csv`. This trips up almost everyone the first
