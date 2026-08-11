@@ -95,6 +95,16 @@ VISIT = {
 }
 
 # UCUM unit strings -> OMOP unit concepts
+#
+# Units in {curly braces} are UCUM annotations marking a dimensionless
+# quantity -- {score}, {count}, {presence}, {nominal}. These have no unit
+# concept because they have no unit: a depression score of 14 is not 14 of
+# anything. They correctly stay at concept_id 0. Roughly 90,000 measurements
+# in real Synthea fall into this category, which is why unit coverage has a
+# realistic ceiling around 83% rather than 100%.
+#
+# A handful of genuine units (U/L, kU/L, m[IU]/L, ng/dl) are absent from this
+# Athena download and remain open.
 UNIT = {
     "cm":     8582,
     "kg":     9529,
@@ -129,6 +139,12 @@ UNIT = {
     "/[HPF]":       8786,   # per high power field
     "[iU]/L":       8923,   # international unit per liter
     "{copies}/mL":  8799,   # copies per milliliter
+    # "K/uL" means thousands per microliter -- a cell count. UCUM
+    # string-matches it to 8792 "Kelvin per microliter", which is the wrong
+    # unit and the wrong dimension entirely. Mapped deliberately to match
+    # 10*3/uL. A blood count recorded in units of temperature would still
+    # query cleanly and still be wrong.
+    "K/uL":         8848,   # thousand per microliter
 }
 
 # "Type" concepts describe WHERE a record came from, not what it says.

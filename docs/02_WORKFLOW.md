@@ -289,14 +289,14 @@ Read 7,164 source rows  ->  wrote 7,365 OMOP rows in 0.3s
   measurement         3,138
   death                   3
 
-17 of 20 checks passed  (0 error, 3 warning)
+18 of 21 checks passed  (0 error, 3 warning)
 ```
 
 More rows come out than went in because `observation_period` is created from
 nothing — it is calculated, not copied.
 
 With the Athena vocabulary loaded, the two mapping-coverage warnings clear and
-the same run reports **19 of 20 (0 error, 1 warning)**. The remaining warning
+the same run reports **20 of 21 (0 error, 1 warning)**. The remaining warning
 is the two patients with no visits, which is correct behaviour.
 
 ---

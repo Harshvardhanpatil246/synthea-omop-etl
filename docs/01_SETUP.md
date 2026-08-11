@@ -199,7 +199,7 @@ Loading takes about 70 seconds and reads 1,686,068 concepts plus 1,101,395
 `Maps to` relationships into memory. Close other applications if you have 8 GB
 of RAM or less.
 
-The quality checks that were failing on mapping coverage now pass — 19 of 20,
+The quality checks that were failing on mapping coverage now pass — 20 of 21,
 0 errors.
 
 > 100% is a property of the sample generator, which uses a small curated set

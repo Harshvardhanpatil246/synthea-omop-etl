@@ -142,10 +142,10 @@ And the quality report:
   PASS   ERROR  nothing_happens_before_birth                0.0      0.0
   PASS   ERROR  nothing_happens_after_death                 0.0      0.0
   ...
-  17 of 20 checks passed  (0 error, 3 warning)
+  18 of 21 checks passed  (0 error, 3 warning)
 ```
 
-The two extra warnings are the clinical mapping-coverage checks, which sit at
+Two of those warnings are the clinical mapping-coverage checks, which sit at
 0% until you load the vocabulary. The next section shows what happens when
 you do.
 
@@ -153,77 +153,76 @@ you do.
 
 ## Verified results
 
-The pipeline has been run end to end against **PostgreSQL 17** with the full
-**OHDSI Athena** vocabulary loaded (1,686,068 concepts and 1,101,395
-`Maps to` relationships covering SNOMED CT, RxNorm and LOINC).
+The pipeline has been run end to end over **1,000 real Synthea patients**
+against **PostgreSQL 17**, with the full **OHDSI Athena** vocabulary loaded —
+1,686,068 concepts and 1,101,395 `Maps to` relationships covering SNOMED CT,
+RxNorm and LOINC.
 
 The database password is supplied through the `PGPASSWORD` environment
 variable, never on the command line.
 
-### Extract and transform
-
-![Extract and transform](docs/images/etl-run-1.png)
+![Full pipeline run](docs/images/etl-run.png)
 
 ### Load
 
 ```
   Table                          Rows
   ------------------------ ----------
-  person                          200
-  observation_period              198
-  visit_occurrence              1,277
-  condition_occurrence          1,260
-  drug_exposure                 1,289
-  measurement                   3,138
-  death                             3
+  person                        1,148
+  observation_period            1,148
+  visit_occurrence             67,837
+  condition_occurrence         41,551
+  drug_exposure                55,860
+  measurement                 534,632
+  death                           148
 
-  Read 7,164 source rows -> wrote 7,365 OMOP rows in 51.7s
+  Read 1,014,092 source rows -> wrote 702,324 OMOP rows in 280.4s
 ```
 
-![Pipeline load and report](docs/images/etl-run-2.png)
+Runtime swings between roughly 280s and 530s across runs on the same machine.
+The difference is the operating system's file cache: the 1.2 GB vocabulary is
+read from disk on a cold run and from memory on a warm one. Loading the
+vocabulary into memory on every run is the single biggest cost, and is listed
+as a known limitation.
 
-Almost all of that time is reading the vocabulary files (50-70s depending on
-disk cache). The transform itself is still sub-second.
+`person` and `observation_period` match exactly here. Every Synthea patient
+has at least one encounter, so every patient gets an observation window — on
+the smaller sample dataset two patients had no visits and correctly got none.
 
 ### Vocabulary coverage
 
 ```
-    LOINC         100.0%  ####################
+    LOINC          93.8%  ##################
     RxNorm        100.0%  ####################
-    SNOMED        100.0%  ####################
+    SNOMED         98.2%  ###################
     ethnicity     100.0%  ####################
-    gender        100.0%  ####################
-    race           80.5%  ################
-    unit          100.0%  ####################
+    gender        100.0%  ###################
+    race           97.6%  ###################
+    unit           77.3%  ###############
     visit         100.0%  ####################
 ```
 
-Exactly one distinct code failed to map: `race = other`, which has no OMOP
-equivalent. Zero rows were rejected.
-
-> **Read that 100% honestly.** The built-in generator uses a small, curated
-> set of real SNOMED, RxNorm and LOINC codes, so of course they all resolve.
-> Real Synthea output uses thousands of codes and coverage will land nearer
-> 85-95%. The drop is not a regression — it is the pipeline meeting reality.
+56 distinct codes could not be mapped and 313,064 rows were rejected. Neither
+is data loss, and both are explained in **What real data revealed** below.
 
 ### Data quality
 
 ```
-  19 of 20 checks passed  (0 error, 1 warning)
+  20 of 21 checks passed  (0 error, 1 warning)
 
-  [WARN] every_person_has_observation_period
-        People with no visits have no observation period.
-        Found 2, limit was 0
+  [WARN] nothing_happens_after_death
+        Encounters recorded after death. A small administrative tail is
+        normal; the count should be known and explainable.
+        Found 127, limit was 0
 
   No blocking errors. The data is safe to analyse.
 ```
 
 ![Data quality report](docs/images/quality-report.png)
 
-**Zero errors is the number that matters.** The single warning is correct
-behaviour, not a defect: two patients never attended a visit, so there is no
-window during which they were observed. Inventing one would make them look
-like patients who had been checked and found healthy.
+**Zero errors across 1,014,092 source rows is the number that matters.** The
+single warning is a documented source artifact rather than a load defect —
+see Finding 2 below.
 
 Results are written to `dq_result` with a run id, so quality is tracked across
 runs rather than glanced at once.
@@ -241,9 +240,9 @@ vocabulary" notice. That is by design: the logic is tested in isolation.
 
 ## What real data revealed
 
-The figures above are from the built-in sample generator: 200 patients and 23
-hand-picked codes. The pipeline was then run against **1,000 real Synthea
-patients** — a very different proposition.
+The figures above are from real Synthea data. Getting there from the built-in
+sample generator — 200 patients, 23 hand-picked codes — is where the actual
+work was.
 
 | | Sample data | Real Synthea |
 |---|---|---|
@@ -253,9 +252,9 @@ patients** — a very different proposition.
 | SNOMED coverage | 100% | 98.2% |
 | RxNorm coverage | 100% | 100% |
 | LOINC coverage | 100% | 93.8% |
-| Unit coverage | 100% | 64.4% |
+| Unit coverage | 100% | 77.3% |
 | Rejected rows | 0 | 313,064 |
-| Quality checks | 19 of 20, 0 errors | 20 of 21, 0 errors |
+| Quality checks | 20 of 21, 0 errors | 20 of 21, 0 errors |
 
 Coverage fell and rejects appeared. That is the pipeline meeting reality, and
 the three findings below are the actual work.
@@ -307,6 +306,30 @@ Three Synthea encounter classes had no mapping and were landing on
 OMOP has **no standard Visit concept for hospice** — every hospice entry in
 the vocabulary is non-standard, from UB04 claims — so non-hospital institution
 is the accepted fallback. Visit coverage went from 98.9% to 100%.
+
+### Finding 4 — the units, and one that would have been quietly wrong
+
+Real Synthea uses 50 distinct units where the sample data used 9. Mapping 24
+of them lifted unit coverage from **64.4% to 77.3%**.
+
+One deserves singling out. `K/uL` string-matches in UCUM to concept **8792,
+"Kelvin per microliter"** — but in lab data `K/uL` means *thousands per
+microliter*, a white blood cell count. `K` is the SI prefix for kilo, not the
+symbol for Kelvin. Accepting the match would have recorded cell counts in
+units of temperature: the query still runs, the number still looks reasonable,
+and the data is silently wrong. It is mapped deliberately to 8848, the same
+concept as `10*3/uL`.
+
+The remaining 22.7% is mostly **not fixable, and should not be**. 89,870
+measurements (16.8%) use UCUM annotations — `{score}`, `{count}`,
+`{presence}`, `{nominal}`. An annotation marks a quantity as *dimensionless*:
+a depression score of 14 is not 14 of anything. There is no unit concept
+because there is no unit, so `concept_id = 0` is the correct answer.
+
+That puts the realistic ceiling at about **83%**, not 100%. Among measurements
+that actually carry a real unit, coverage is **92.9%**. A handful of genuine
+units (`U/L`, `kU/L`, `m[IU]/L`) are simply absent from this Athena download
+and remain open.
 
 ### The rejects are a scope limit, not data loss
 

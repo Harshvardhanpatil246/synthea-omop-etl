@@ -399,7 +399,7 @@ Expected on the 200-patient sample data, without Athena:
 - 7,164 source rows read
 - 7,365 OMOP rows written
 - 0 rejects
-- 17 of 20 quality checks pass (0 errors, 3 warnings)
+- 18 of 21 quality checks pass (0 errors, 3 warnings)
 
 The three warnings are: two patients with no visits, and clinical mapping
 coverage at 0% because Athena is not loaded. Both are expected and explained.
@@ -423,7 +423,7 @@ Vocabulary loaded: 1,686,068 concepts, 1,101,395 `Maps to` relationships
 | Distinct unmapped codes | 1 (`race = other`) |
 | SNOMED / RxNorm / LOINC coverage | 100% |
 | Race coverage | 80.5% |
-| Quality checks | 19 of 20 pass (0 errors, 1 warning) |
+| Quality checks | 20 of 21 pass (0 errors, 1 warning) |
 | Runtime | 72.8s, of which ~70s is vocabulary loading |
 
 The single warning is `every_person_has_observation_period` — the same two
@@ -440,18 +440,31 @@ sample generator. Real Synthea output uses a far wider code set.
 | Source rows read | 1,014,092 |
 | OMOP rows written | 702,324 |
 | Rejected rows | 313,064 (all non-numeric observations, A4) |
-| Distinct unmapped codes | 80 |
+| Distinct unmapped codes | 56 (was 80 before the UCUM units were added) |
 | SNOMED / RxNorm / LOINC coverage | 98.2% / 100% / 93.8% |
 | Visit coverage | 100% (after adding `home`, `snf`, `hospice`) |
-| Unit coverage | 64.4% |
+| Unit coverage | 77.3% |
 | Quality checks | 20 of 21 pass (0 errors, 1 warning) |
-| Runtime | 504.6s |
+| Runtime | 280s warm cache to 530s cold; vocabulary load dominates |
 
 The single warning is `nothing_happens_after_death`: 127 encounters, one each
 for 127 of the 148 deceased patients, 1-14 days after the recorded death date.
 This is an administrative tail, not a load defect, and the records are kept
 (assumption A8).
 
-**Unit coverage of 64.4% is the largest remaining gap.** Real Synthea uses
-many UCUM units absent from the built-in table in `src/vocabulary.py`. The
-codes are listed in `data/unmapped_codes.csv`, ranked by frequency.
+**Unit coverage improved from 64.4% to 77.3%** by mapping 24 UCUM units.
+
+The remaining 22.7% is largely not mappable by design. 89,870 measurements
+(16.8%) carry UCUM *annotations* — `{score}`, `{count}`, `{presence}`,
+`{nominal}` — which mark a quantity as dimensionless. These have no unit
+concept because they have no unit, so they correctly remain at concept_id 0.
+Among measurements that carry a real unit, coverage is 92.9%; the realistic
+ceiling for the overall figure is about 83%.
+
+`K/uL` is mapped deliberately rather than by string match: UCUM resolves it to
+8792 "Kelvin per microliter", but in lab data it means thousands per
+microliter. It is mapped to 8848, matching `10*3/uL`.
+
+A few genuine units (`U/L`, `kU/L`, `m[IU]/L`, `ng/dl`) are absent from this
+Athena download and remain open. All are listed in `data/unmapped_codes.csv`,
+ranked by frequency.
