@@ -157,6 +157,13 @@ The pipeline has been run end to end against **PostgreSQL 17** with the full
 **OHDSI Athena** vocabulary loaded (1,686,068 concepts and 1,101,395
 `Maps to` relationships covering SNOMED CT, RxNorm and LOINC).
 
+The database password is supplied through the `PGPASSWORD` environment
+variable, never on the command line.
+
+### Extract and transform
+
+![Extract and transform](docs/images/etl-run-1.png)
+
 ### Load
 
 ```
@@ -170,11 +177,13 @@ The pipeline has been run end to end against **PostgreSQL 17** with the full
   measurement                   3,138
   death                             3
 
-  Read 7,164 source rows -> wrote 7,365 OMOP rows in 72.8s
+  Read 7,164 source rows -> wrote 7,365 OMOP rows in 51.7s
 ```
 
-Most of those 72.8 seconds is reading the vocabulary files. The transform
-itself is still sub-second.
+![Pipeline load and report](docs/images/etl-run-2.png)
+
+Almost all of that time is reading the vocabulary files (50-70s depending on
+disk cache). The transform itself is still sub-second.
 
 ### Vocabulary coverage
 
@@ -209,6 +218,8 @@ equivalent. Zero rows were rejected.
   No blocking errors. The data is safe to analyse.
 ```
 
+![Data quality report](docs/images/quality-report.png)
+
 **Zero errors is the number that matters.** The single warning is correct
 behaviour, not a defect: two patients never attended a visit, so there is no
 window during which they were observed. Inventing one would make them look
@@ -216,6 +227,15 @@ like patients who had been checked and found healthy.
 
 Results are written to `dq_result` with a run id, so quality is tracked across
 runs rather than glanced at once.
+
+### Tests
+
+27 unit tests covering date parsing, ID generation, every mapping rule, and
+the rejection logic. No database and no network required — the tests run
+against the built-in mappings only, which is why they log the "no Athena
+vocabulary" notice. That is by design: the logic is tested in isolation.
+
+![Unit tests](docs/images/test.png)
 
 ---
 
@@ -241,7 +261,45 @@ LEFT JOIN measurement m     ON m.person_id = p.person_id
 GROUP BY p.person_id, p.year_of_birth;
 ```
 
+![Diabetes and metformin cohort](docs/images/cohort.png)
+
 More examples: **[analysis/example_queries.sql](analysis/example_queries.sql)**
+
+---
+
+## Example analyses
+
+All of these run against the loaded CDM in PostgreSQL. Every one of them would
+work unchanged against a hospital database anywhere in the world, provided it
+is also in OMOP. That portability is the entire reason OMOP exists.
+
+**Age and gender distribution**
+
+![Age and gender distribution](docs/images/pgadmin-person.png)
+
+**Most common diagnoses**
+
+![Most common diagnoses](docs/images/The_most_common_diagnoses.png)
+
+**Visit types**
+
+![Visit types](docs/images/What_kinds_of_visits_happen_most.png)
+
+**Average lab values with units** — this is the query that shows why
+`value_as_number` is a real number and not text. No casting, no cleaning.
+
+![Average lab values](docs/images/Average_lab_values_with_units.png)
+
+**How long each patient is actually observed** — the question
+`observation_period` exists to answer. Average window here is 7.07 years.
+
+![Observation windows](docs/images/Data_quality.png)
+
+**Tracing a row back to its source** — original Synthea UUID and raw gender
+value sitting next to the mapped concept ID. Being able to do this is what
+makes an ETL auditable.
+
+![Source traceability](docs/images/Trace_a_row_back_to_its_source.png)
 
 ---
 
