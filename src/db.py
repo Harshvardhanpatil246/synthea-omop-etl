@@ -59,7 +59,15 @@ class Database:
 
     def execute(self, sql: str, params: Sequence[Any] | None = None) -> Any:
         cur = self.conn.cursor()
-        cur.execute(sql, params or ())
+        # Only hand psycopg2 a params argument when there actually are
+        # params. Passing an empty tuple makes it scan the SQL for "%"
+        # placeholders, so any query containing a literal percent sign --
+        # a '%' unit, a LIKE pattern -- fails with "tuple index out of
+        # range". SQLite does not care either way.
+        if params:
+            cur.execute(sql, params)
+        else:
+            cur.execute(sql)
         return cur
 
     def executemany(self, sql: str, rows: Sequence[Sequence[Any]]) -> int:

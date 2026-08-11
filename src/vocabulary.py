@@ -86,6 +86,12 @@ VISIT = {
     "emergency":  9203,   # Emergency Room Visit
     "urgentcare": 9203,   # Emergency Room Visit
     "virtual":    5083,   # Telehealth
+    "home":     581476,   # Home Visit
+    "snf":    42898160,   # Non-hospital institution Visit (skilled nursing)
+    # OMOP has no standard Visit concept for hospice. Every hospice entry in
+    # the vocabulary is non-standard, from UB04 claims. Non-hospital
+    # institution is the accepted fallback.
+    "hospice": 42898160,  # Non-hospital institution Visit
 }
 
 # UCUM unit strings -> OMOP unit concepts

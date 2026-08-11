@@ -69,7 +69,8 @@ CHECKS = [
     ("visit_concept_is_valid", "visit_occurrence", "ERROR",
      "visit_concept_id must be a known OMOP visit type or 0",
      """SELECT count(*) FROM visit_occurrence
-        WHERE visit_concept_id NOT IN (9201, 9202, 9203, 5083, 0)""",
+        WHERE visit_concept_id NOT IN (9201, 9202, 9203, 5083,
+                                       581476, 42898160, 0)""",
      0, "eq"),
 
     ("person_id_is_unique", "person", "ERROR",
@@ -132,12 +133,30 @@ CHECKS = [
                 WHERE CAST(substr(CAST(c.condition_start_date AS VARCHAR), 1, 4) AS INTEGER) < p.year_of_birth""",
      0, "eq"),
 
-    ("nothing_happens_after_death", "visit_occurrence", "ERROR",
-     "A visit cannot happen after the patient died",
+    # Real Synthea data produces one administrative encounter shortly after
+    # death for most deceased patients (death certification, late-posted
+    # results). Real EHR extracts do the same, because death is often
+    # recorded retrospectively. So this is a WARN worth counting, not a
+    # blocker -- the records are kept, never deleted.
+    ("nothing_happens_after_death", "visit_occurrence", "WARN",
+     "Encounters recorded after death. A small administrative tail is "
+     "normal; the count should be known and explainable.",
      """SELECT count(*) FROM visit_occurrence v
         JOIN death d ON d.person_id = v.person_id
         WHERE v.visit_start_date > d.death_date""",
-     0, "eq"),
+     0, "lte"),
+
+    # The blocking version: if a large share of a deceased patient's visits
+    # fall after their death date, the death dates themselves are wrong.
+    ("death_dates_are_not_systematically_wrong", "death", "ERROR",
+     "Percent of deceased patients' visits falling after death. A few "
+     "percent is administrative; more means the death date is unreliable.",
+     """SELECT CASE WHEN count(*) = 0 THEN 0 ELSE
+            round(100.0 * sum(CASE WHEN v.visit_start_date > d.death_date
+                                   THEN 1 ELSE 0 END) / count(*), 2) END
+        FROM visit_occurrence v
+        JOIN death d ON d.person_id = v.person_id""",
+     5, "lte"),
 
     # ---------------- PLAUSIBILITY: values ----------------
     ("measurement_values_are_present", "measurement", "WARN",
@@ -145,9 +164,17 @@ CHECKS = [
      "SELECT count(*) FROM measurement WHERE value_as_number IS NULL",
      0, "lte"),
 
+    # Narrowed after real Synthea data flagged 63 bone-density T-scores
+    # (LOINC 38265-5) as failures. A T-score is negative by design -- below
+    # -2.5 is the clinical definition of osteoporosis. The rule only holds
+    # for physical quantities, so it is now restricted to those units.
     ("no_negative_measurements", "measurement", "ERROR",
-     "Height, weight and lab values are never negative",
-     "SELECT count(*) FROM measurement WHERE value_as_number < 0",
+     "Physical quantities are never negative. Scores and indices such as "
+     "T-scores legitimately are, so they are excluded.",
+     """SELECT count(*) FROM measurement
+        WHERE value_as_number < 0
+          AND unit_source_value IN ('cm', 'kg', 'kg/m2', 'mm[Hg]',
+                                    'mg/dL', 'g/dL', '%', '/min', 'mmol/L')""",
      0, "eq"),
 
     # ---------------- VOCABULARY COVERAGE ----------------

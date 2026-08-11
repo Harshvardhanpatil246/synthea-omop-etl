@@ -237,6 +237,14 @@ sits around 80% rather than 100%, and it is expected.
 | `outpatient`, `ambulatory`, `wellness` | 9202 | Outpatient Visit |
 | `emergency`, `urgentcare` | 9203 | Emergency Room Visit |
 | `virtual` | 5083 | Telehealth |
+| `home` | 581476 | Home Visit |
+| `snf` | 42898160 | Non-hospital institution Visit |
+| `hospice` | 42898160 | Non-hospital institution Visit |
+
+`home`, `snf` and `hospice` were added after real Synthea data showed 731
+visits landing on concept_id 0. OMOP has no standard Visit concept for
+hospice — every hospice entry in the vocabulary is non-standard, from UB04
+claims vocabularies — so non-hospital institution is the accepted fallback.
 
 ### 5.4 Units
 
@@ -329,7 +337,7 @@ ORDER BY count(*) DESC;
 
 ## 8. Data quality checks
 
-Twenty checks, run separately after the load. Full list in
+Twenty-one checks, run separately after the load. Full list in
 `src/run_quality_checks.py`.
 
 | Category | Checks | Severity |
@@ -356,6 +364,8 @@ Results persist in `dq_result` so quality can be tracked over time.
 | A5 | All `*_type_concept_id` = 32817 (EHR) | all | Source is an EHR export |
 | A6 | Persons with no visits get no observation period | `observation_period` | No window of observation exists |
 | A7 | Observation period end clipped to death date | `observation_period` | Cannot observe a patient after death |
+| A8 | Encounters shortly after death are kept, not deleted | `visit_occurrence` | Administrative tail (death certification, late results) is normal in EHR extracts. Reported as WARN; a separate ERROR fires above 5% |
+| A9 | Negative values are only a defect for physical units | `measurement` | T-scores and similar indices are negative by design |
 
 ---
 
@@ -420,5 +430,28 @@ The single warning is `every_person_has_observation_period` — the same two
 patients with no visits (assumption A6).
 
 100% clinical coverage reflects the curated code set used by the built-in
-sample generator. Real Synthea output uses a far wider code set and coverage
-is expected to fall to roughly 85-95%.
+sample generator. Real Synthea output uses a far wider code set.
+
+### Verified: 1,000 real Synthea patients
+
+| Measure | Result |
+|---|---|
+| Persons | 1,148 |
+| Source rows read | 1,014,092 |
+| OMOP rows written | 702,324 |
+| Rejected rows | 313,064 (all non-numeric observations, A4) |
+| Distinct unmapped codes | 80 |
+| SNOMED / RxNorm / LOINC coverage | 98.2% / 100% / 93.8% |
+| Visit coverage | 100% (after adding `home`, `snf`, `hospice`) |
+| Unit coverage | 64.4% |
+| Quality checks | 20 of 21 pass (0 errors, 1 warning) |
+| Runtime | 504.6s |
+
+The single warning is `nothing_happens_after_death`: 127 encounters, one each
+for 127 of the 148 deceased patients, 1-14 days after the recorded death date.
+This is an administrative tail, not a load defect, and the records are kept
+(assumption A8).
+
+**Unit coverage of 64.4% is the largest remaining gap.** Real Synthea uses
+many UCUM units absent from the built-in table in `src/vocabulary.py`. The
+codes are listed in `data/unmapped_codes.csv`, ranked by frequency.

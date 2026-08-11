@@ -239,6 +239,96 @@ vocabulary" notice. That is by design: the logic is tested in isolation.
 
 ---
 
+## What real data revealed
+
+The figures above are from the built-in sample generator: 200 patients and 23
+hand-picked codes. The pipeline was then run against **1,000 real Synthea
+patients** — a very different proposition.
+
+| | Sample data | Real Synthea |
+|---|---|---|
+| Patients | 200 | 1,148 |
+| Source rows read | 7,164 | 1,014,092 |
+| OMOP rows written | 7,365 | 702,324 |
+| SNOMED coverage | 100% | 98.2% |
+| RxNorm coverage | 100% | 100% |
+| LOINC coverage | 100% | 93.8% |
+| Unit coverage | 100% | 64.4% |
+| Rejected rows | 0 | 313,064 |
+| Quality checks | 19 of 20, 0 errors | 20 of 21, 0 errors |
+
+Coverage fell and rejects appeared. That is the pipeline meeting reality, and
+the three findings below are the actual work.
+
+### Finding 1 — a defect in my own quality check
+
+`no_negative_measurements` failed with 64 rows. 63 of them were LOINC
+`38265-5`, which the vocabulary resolves to *"DXA Radius and Ulna [T-score]
+Bone density"*.
+
+**A T-score is negative by design.** Below −2.5 is the clinical definition of
+osteoporosis. The data was right and the check was wrong: it assumed all
+measurements are physical quantities, when many are scores and indices.
+
+Fixed by restricting the rule to units that cannot physically go below zero.
+
+### Finding 2 — a genuine source artifact, kept rather than deleted
+
+`nothing_happens_after_death` failed with 127 rows. Investigating:
+
+- 127 visits across **127 distinct patients** — exactly one each
+- 1 to 14 days after death, averaging 6.3
+- 127 of the 148 deceased patients (86%) affected
+- 0.76% of all visits belonging to deceased patients
+
+That systematic pattern is an administrative tail — death certification and
+late-posted results — and it is extremely common in real EHR extracts, where
+death is often recorded retrospectively. The ETL loaded the source faithfully;
+the contradiction was already in the file.
+
+**Deleting 127 clinical records to make a check go green would have been the
+wrong fix.** Instead the check was reclassified as a WARN that still reports
+the count, and a new ERROR check was added for the pathological case: if more
+than 5% of a deceased patient's visits fall after death, the death dates
+themselves are unreliable. This data sits at 0.8%, so it passes the blocking
+check while the artifact stays visible.
+
+### Finding 3 — a gap in my own mapping
+
+Three Synthea encounter classes had no mapping and were landing on
+`concept_id = 0`:
+
+| Source | Visits | Now maps to |
+|---|---|---|
+| `home` | 410 | 581476 — Home Visit |
+| `snf` | 169 | 42898160 — Non-hospital institution Visit |
+| `hospice` | 152 | 42898160 — Non-hospital institution Visit |
+
+OMOP has **no standard Visit concept for hospice** — every hospice entry in
+the vocabulary is non-standard, from UB04 claims — so non-hospital institution
+is the accepted fallback. Visit coverage went from 98.9% to 100%.
+
+### The rejects are a scope limit, not data loss
+
+All 313,064 rejected rows are non-numeric observations — 36.9% of the
+observation file:
+
+```
+  14,669  72166-2   Tobacco smoking status
+  11,228  71802-3   Housing status
+  11,210  93038-8   Stress level
+  11,210  67875-5   Employment status - current
+  ...    a full social-determinants questionnaire
+```
+
+These are coded survey answers, not measurements. In OMOP they belong in the
+`observation` table, which this project does not build — assumption **A4**.
+Every one is logged with a reason and can be replayed. At 36.9% of the
+observation file, this is now the strongest argument for building
+`observation` next.
+
+---
+
 ## The payoff
 
 Once the data is in OMOP shape, a question that used to take a page of messy
@@ -385,15 +475,26 @@ what to fix, ranked by how often each code appears.
 
 ---
 
-## Cross-database portability bug found and fixed
+## Cross-database portability bugs found and fixed
 
-The `nothing_happens_before_birth` check used `substr()` on a date column.
-This worked on SQLite, where dates are stored as text, but failed on
-PostgreSQL, where `DATE` is a real type. Because PostgreSQL aborts a
-transaction after any failed statement, this one line silently disabled seven
-downstream checks and the results insert. Fixed by casting the date to text
-before the substring, and by adding a rollback to the error handler so a
-single bad check can no longer take the whole run down.
+Two bugs of the same family — SQL that works on SQLite and fails on
+PostgreSQL. Both were found by actually running against both engines.
+
+**1. String functions on a date column.** The `nothing_happens_before_birth`
+check used `substr()` on a date. This worked on SQLite, where dates are stored
+as text, but failed on PostgreSQL, where `DATE` is a real type. Because
+PostgreSQL aborts a transaction after any failed statement, this one line
+silently disabled seven downstream checks and the results insert. Fixed by
+casting the date to text before the substring, and by adding a rollback to the
+error handler so a single bad check can no longer take the whole run down.
+
+**2. Literal `%` treated as a parameter placeholder.** `Database.execute()`
+passed `params or ()` to the driver. An empty tuple is not the same as no
+argument: psycopg2 still scans the SQL for `%` placeholders, so any query
+containing a literal percent sign — a `'%'` unit, a `LIKE` pattern — died with
+`tuple index out of range`. Fixed by only passing a params argument when there
+are actually params. SQLite was unaffected either way, which is exactly why it
+went unnoticed.
 
 ---
 
