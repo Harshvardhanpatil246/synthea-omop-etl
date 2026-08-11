@@ -105,6 +105,30 @@ UNIT = {
     "%":      8554,
     "/min":   8541,
     "mmol/L": 8753,
+    # --- added after real Synthea data (UCUM concepts from Athena) ---
+    "a":            9448,   # year
+    "s":            8555,   # second
+    "mm":           8588,   # millimeter
+    "Cel":        586323,   # degree Celsius
+    "pH":           8482,   # pH
+    "fL":           8583,   # femtoliter
+    "pg":           8564,   # picogram
+    "g/L":          8636,   # gram per liter
+    "mg/L":         8751,   # milligram per liter
+    "mg/g":         8723,   # milligram per gram
+    "ug/L":         8748,   # microgram per liter
+    "ug/dL":        8837,   # microgram per deciliter
+    "ug/mL":        8859,   # microgram per milliliter
+    "ng/L":         8725,   # nanogram per liter
+    "ng/mL":        8842,   # nanogram per milliliter
+    "pg/mL":        8845,   # picogram per milliliter
+    "mL/min":       8795,   # milliliter per minute
+    "10*3/uL":      8848,   # thousand per microliter
+    "10*6/uL":      8815,   # million per microliter
+    "/uL":          8647,   # per microliter
+    "/[HPF]":       8786,   # per high power field
+    "[iU]/L":       8923,   # international unit per liter
+    "{copies}/mL":  8799,   # copies per milliliter
 }
 
 # "Type" concepts describe WHERE a record came from, not what it says.
